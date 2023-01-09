@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Restorantt.Models.Blog>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Resim
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Onay
+            </th>
+            <th>
+                Mesaj
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Image == null)
+                    {
+
+                        <img src="~/website/images/blog-14.jpg" width="100" height="80" />
+                    }
+                    else
+                    {
+                        <img src="@item.Image" width="100" height="80" />
+                    }
+                </td>
+                
+             
+                <td>
+                    @if (item.Onay)
+                    {
+                        <button class="btn btn-success" bt-sm><i class="bi bi-check-circle"></i>Evet</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-danger" bt-sm><i class="bi bi-x-circle"></i>Hayır</button>
+                    }
+                    
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mesaj)
+                </td>
+              
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"> <i class="bi bi-pencil-fill"></i> Onayla</a> |
+
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Sil</a>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
