@@ -32,7 +32,7 @@ namespace Restorantt.Areas.Musteri.Controllers
 
         public IActionResult Index()  //görünüm ekledik razor boş değil normal ekledik index.cshtml
         {
-            var menu = _db.Menus.Where(i => i.OzelMenu).ToList();  //Özel Menüyü ana sayfaya getrime işlemi
+            var menu = _db.Menus.Where(i => i.OzelMenu).ToList();  //Özel Menüyü ana sayfaya getrime işlemii
             return View(menu);
         }
         public IActionResult CategoryDetails(int? id)
